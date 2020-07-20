@@ -8,20 +8,30 @@
  * @link    https://www.studiopress.com/
  */
 
+/* js edit - change to ta colors */
 $ta_twenty_default_colors = [
-	'link'   => '#0073e5',
-	'accent' => '#0073e5',
+	'light-gray' => '#f2f2f2',	// site bg
+	'dark-gray' => '#444',	// text
+	'super-dark-gray' => '#2a2a2a',	// buttons
+	'orange'   => '#e96a2a',	// links
+	'green' => '#9DCB2A',	// some buttons & headers
+	'red' => '#d91420',	// some buttons
 ];
 
 $ta_twenty_link_color = get_theme_mod(
 	'ta_twenty_link_color',
-	$ta_twenty_default_colors['link']
+	$ta_twenty_default_colors['orange']
 );
 
-$ta_twenty_accent_color = get_theme_mod(
-	'ta_twenty_accent_color',
-	$ta_twenty_default_colors['accent']
+$ta_twenty_button_color = get_theme_mod(
+	'ta_twenty_button_color',
+	$ta_twenty_default_colors['super-dark-gray']
 );
+
+// $ta_twenty_accent_color = get_theme_mod(
+// 	'ta_twenty_accent_color',
+// 	$ta_twenty_default_colors['accent']
+// );
 
 $ta_twenty_link_color_contrast   = ta_twenty_color_contrast( $ta_twenty_link_color );
 $ta_twenty_link_color_brightness = ta_twenty_color_brightness( $ta_twenty_link_color, 35 );
@@ -29,23 +39,43 @@ $ta_twenty_link_color_brightness = ta_twenty_color_brightness( $ta_twenty_link_c
 return [
 	'fonts-url'            => 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,700&display=swap',
 	'content-width'        => 1062,
-	'button-bg'            => $ta_twenty_link_color,
-	'button-color'         => $ta_twenty_link_color_contrast,
-	'button-outline-hover' => $ta_twenty_link_color_brightness,
+	'button-bg'            => $ta_twenty_button_color,
+	'button-color'         => '#fff',
+	// 'button-outline-hover' => $ta_twenty_link_color_brightness,
 	'link-color'           => $ta_twenty_link_color,
 	'default-colors'       => $ta_twenty_default_colors,
-	'editor-color-palette' => [
-		[
-			'name'  => __( 'Custom color', 'ta-twenty' ), // Called “Link Color” in the Customizer options. Renamed because “Link Color” implies it can only be used for links.
-			'slug'  => 'theme-primary',
-			'color' => $ta_twenty_link_color,
-		],
-		[
-			'name'  => __( 'Accent color', 'ta-twenty' ),
-			'slug'  => 'theme-secondary',
-			'color' => $ta_twenty_accent_color,
-		],
-	],
+	'editor-color-palette' => array(
+		array(
+			'name'  => 'Red',
+			'slug'  => 'red',
+			'color' => '#d91420',
+		),
+		array(
+			'name'  => 'Orange',
+			'slug'  => 'orange',
+			'color' => '#e96a2a',
+		),
+		array(
+			'name'  => 'Green',
+			'slug'  => 'green',
+			'color' => '#9DCB2A',
+		),
+		array(
+			'name'  => 'Dark Gray',
+			'slug'  => 'dark-gray',
+			'color' => '#303236',
+		),
+		array(
+			'name'  => 'White',
+			'slug'  => 'white',
+			'color' => '#fff',
+		),
+		array(
+			'name'  => 'Black',
+			'slug'  => 'black',
+			'color' => '#000',
+		),
+	),
 	'editor-font-sizes'    => [
 		[
 			'name' => __( 'Small', 'ta-twenty' ),

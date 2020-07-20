@@ -1,5 +1,20 @@
-style.css:
-- body: bg, text color, font-family
-
 customizer:
 - site logo - width 500px
+- site footer - [footer_copyright before="Copyright  " copyright="© 2011-"] · <a href="https://www.globalcognition.org/">Global Cognition LLC</a> · Thinker Academy™ is a trademark of Global Cognition LLC
+
+notes:
+boxes:
+- quote
+- quote-gray
+
+buttons:
+- black
+- default (dark gray)
+- Orange
+- green
+- red
+
+other blocks:
+- blockquote
+- bullets - green checks, red checks
+- 'user profile' widget

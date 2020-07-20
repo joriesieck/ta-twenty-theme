@@ -1,8 +1,29 @@
+/* Variable Declarations - js edit
+---------------------------------------------------------------------------- */
 body {
-	color: #333;
-	font-family: "Source Sans Pro", sans-serif;
-	font-size: 18px;
-	font-weight: 400;
+	--white: #fff;	/* various backgrounds */
+	--light-gray: #f2f2f2;	/* body bg */
+	--dark-gray: #444;	/* body text */
+	--orange: #e96a2a;	/* link text */
+	--gray: #888;	/* link hover, quote text */
+	--off-black: #1a1a1a;	/* footer bg */
+	--dark-gray: #303236;	/* header bg */
+	--green: #9DCB2A;	/* current menu item, buttons, various headers */
+	--medium-gray: #aaa;	/* footer & footer widget text */
+	--super-dark-gray: #2a2a2a;	/* footer widgets bg, buttons */
+	--dark-gray-1: #666;	/* sidebar text */
+	--light-gray-1: #ddd;	/* borders */
+	--dark-gray-2: #333;	/* widget titles */
+	--medium-gray-1: #999;	/* input text */
+	--super-light-gray: #eee;	/* quote-gray bg */
+	--medium-gray-2: #ccc;	/* quote-gray border */
+}
+
+body {
+	color: var(--dark-gray);
+	font-family: "PT Sans", sans-serif;
+	font-size: 16px;
+	font-weight: 300;
 	line-height: 1.625;
 }
 
@@ -58,13 +79,14 @@ dl {
 ---------------------------------------------------------------------------- */
 
 a {
-	color: #0073e5;
+	color: var(--orange);
+	text-decoration: none;
 }
 
 a:focus,
 a:hover {
-	color: #333;
-	text-decoration: none;
+	color: var(--gray);
+	text-decoration: underline;
 }
 
 h1,
@@ -73,29 +95,28 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: "Source Sans Pro", sans-serif;
-	font-weight: 400;
-	line-height: 1.2;
-	margin: 0 0 20px;
+	/* font-family: "Source Sans Pro", sans-serif; */
+	font-weight: 700;
+	line-height: 1.5;
+	margin: 0 0 16px;
+	padding: 0;
+	text-decoration: none;
 }
 
 h1 {
-	font-size: 30px;
+	font-size: 36px;
 }
 
 h2 {
-	font-size: 27px;
+	font-size: 30px;
 }
 
 h3 {
 	font-size: 24px;
-	font-weight: 600;
 }
 
 h4 {
 	font-size: 20px;
-	font-weight: 600;
-	margin-top: 40px;
 }
 
 h5 {
@@ -341,8 +362,15 @@ table {
 ---------------------------------------------------------------------------- */
 
 .ab-block-cta .ab-button {
-	font-family: "Source Sans Pro", sans-serif;
-	font-weight: 600;
+	background-color: var(--super-dark-gray);
+	border: none;
+	color: var(--white);
+	font-size: 14px;
+	font-weight: 400;
+	padding: 12px 20px;
+	text-align: center;
+	text-decoration: none;
+	letter-spacing: 1px;
 }
 
 .wp-block-button .wp-block-button__link {
@@ -417,4 +445,43 @@ table {
 
 .wp-block[data-align="full"] .wp-block-latest-posts {
 	padding: 0 30px;
+}
+
+/* Miscellaneous - js edit
+---------------------------------------------------------------------------- */
+/* boxes */
+.quote,
+.entry-content .wp-block-gccustom-quote-box,
+.wp-block-gccustom-quote-box {
+	background: var(--white);
+	border: 1px solid var(--light-gray-1);
+	color: var(--gray);
+	padding: 20px;
+}
+.entry-content .wp-block-gccustom-quote-box,
+.wp-block-gccustom-quote-box {
+	margin: 40px;
+}
+.entry-content .wp-block-gccustom-quote-box h5,
+.wp-block-gccustom-quote-box h5 {
+	display: none;	/* ta doesn't use the title for quote */
+}
+.entry-content .wp-block-gccustom-quote-box p:last-child,
+.wp-block-gccustom-quote-box p:last-child {
+	margin-bottom: 0;
+}
+
+.quote-gray,
+.entry-content .wp-block-gccustom-quote-box.is-style-gray,
+.wp-block-gccustom-quote-box.is-style-gray,
+.entry-content .wp-block-gccustom-quote-box.is-style-gray-title,
+.wp-block-gccustom-quote-box.is-style-gray-title {
+	background: var(--super-light-gray);
+	border: 1px solid var(--medium-gray-2);
+	color: var(--dark-gray-2);
+}
+.entry-content .wp-block-gccustom-quote-box.is-style-gray-title h5,
+.wp-block-gccustom-quote-box.is-style-gray-title h5 {
+	font-size: 30px;
+	display: block;
 }

@@ -205,3 +205,48 @@ add_filter('excerpt_more','sp_read_more_link');	// this is from the gc-ea theme
 function sp_read_more_link() {
 	return '<p><a class="more-link" href="' . get_permalink() . '">Continue Reading</a></p>';
 }
+
+//* js edit - add font from google api
+wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=PT+Sans:400,700', array(), "CHILD_THEME_VERSION" );
+
+/**
+ * js edit - turn off fullscreen default in editor
+ * @link https://jeanbaptisteaudras.com/en/2020/03/disable-block-editor-default-fullscreen-mode-in-wordpress-5-4/
+*/
+if (is_admin()) {
+	function jba_disable_editor_fullscreen_by_default() {
+    $script = "jQuery( window ).load(function() { const isFullscreenMode = wp.data.select( 'core/edit-post' ).isFeatureActive( 'fullscreenMode' ); if ( isFullscreenMode ) { wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'fullscreenMode' ); } });";
+    wp_add_inline_script( 'wp-blocks', $script );
+	}
+	add_action( 'enqueue_block_editor_assets', 'jba_disable_editor_fullscreen_by_default' );
+}
+
+/**
+ * Gutenberg scripts and styles for custom blocks
+ * @link https://www.billerickson.net/block-styles-in-gutenberg/
+ */
+function be_gutenberg_scripts() {
+
+	wp_enqueue_script(
+		'be-editor',
+		get_stylesheet_directory_uri() . '/assets/js/editor.js',
+		array( 'wp-blocks', 'wp-dom' ),
+		filemtime( get_stylesheet_directory() . '/assets/js/editor.js' ),
+		true
+	);
+}
+add_action( 'enqueue_block_editor_assets', 'be_gutenberg_scripts' );
+
+//* js edit - full width content actually full width on homepage
+add_action('genesis_after_header','gc_twenty_full_width_before', 0);
+function gc_twenty_full_width_before() {
+	if(is_front_page()) {
+		echo '<div class="ta-twenty-front-page">';
+	}
+}
+add_action('genesis_before_footer','gc_twenty_full_width_after', 0);
+function gc_twenty_full_width_after() {
+	if(is_front_page()) {
+		echo '</div>';
+	}
+}
