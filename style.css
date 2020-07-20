@@ -1,11 +1,10 @@
 /*
 Theme Name: TA Twenty
-Theme URI: https://demo.studiopress.com/
-Description: This is the sample theme created for the Genesis Framework.
-Author: StudioPress
-Author URI: https://www.studiopress.com/
+Description: Custom theme for Thinker Academy based on Genesis Sample by StudioPress.
+Author: Jorie Sieck
+Author URI: https://www.joriesieck.com/
 
-Version: 3.3.0
+Version: 0.1
 
 Tags: accessibility-ready, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, footer-widgets, full-width-template, left-sidebar, one-column, right-sidebar, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, two-columns, wide-blocks
 
@@ -20,6 +19,7 @@ Requires PHP: 5.6
 */
 
 /* Table of Contents
+- Variable Declarations
 - HTML5 Reset
 	- Baseline Normalize
 	- Box Sizing
@@ -79,6 +79,21 @@ Requires PHP: 5.6
 - Print Styles
 */
 
+/* Variable Declarations - js edit
+---------------------------------------------------------------------------- */
+body {
+	--white: #fff;	/* various backgrounds */
+	--light-gray: #f2f2f2;	/* body bg */
+	--dark-gray: #444;	/* body text */
+	--orange: #e96a2a;	/* link text */
+	--gray: #888;	/* link hover, quote text */
+	--off-black: #333;	/* quote-gray text */
+	--super-light-gray: #ddd;	/* quote border */
+	--white-gray: #eee;	/* quote-gray bg */
+	--medium-gray: #ccc;	/* quote-gray border */
+	--super-dark-gray: #303236;	/* menu bg */
+	--green: #9DCB2A;	/* current menu item, buttons, various headers */
+}
 
 /* HTML5 Reset
 ---------------------------------------------------------------------------- */
@@ -154,12 +169,13 @@ html {
 	-webkit-font-smoothing: antialiased;
 }
 
+/* js edit - change bg, color, font-family, font-weight */
 body {
-	background-color: #fff;
-	color: #333;
-	font-family: "Source Sans Pro", sans-serif;
+	background-color: var(--light-gray);
+	color: var(--dark-gray);
+	font-family: "PT Sans", sans-serif;
 	font-size: 18px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 1.625;
 	margin: 0;
 	overflow-x: hidden;
@@ -176,16 +192,17 @@ textarea:focus,
 	transition: all 0.2s ease-in-out;
 }
 
+/* js edit - change color, text decoration, hover */
 a {
-	color: #0073e5;
-	text-decoration: underline;
+	color: var(--orange);
+	text-decoration: none;
 	transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
 a:focus,
 a:hover {
-	color: #333;
-	text-decoration: none;
+	color: var(--gray);
+	text-decoration: underline;
 }
 
 p {
@@ -990,27 +1007,32 @@ figcaption,
 
 /* Site Header
 ---------------------------------------------------------------------------- */
-
+/* js edit - change site header */
 .site-header {
-	background-color: #fff;
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-	padding: 0 30px;
+	background-color: var(--super-dark-gray);
+	/* box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); */
+	padding: 10px 0;
+}
+
+.site-header .wrap {
+	max-width: 1140px;
+	margin: 0 auto;
 }
 
 /* Title Area
 --------------------------------------------- */
-
+/* js edit */
 .title-area {
 	float: left;
-	padding-bottom: 25px;
-	padding-top: 25px;
+	padding: 0;
 }
 
 .wp-custom-logo .title-area {
-	max-width: 350px;
+	max-width: 500px;
 	padding-bottom: 5px;
 	padding-top: 5px;
 	width: 100%;
+	margin: auto 0;
 }
 
 .wp-custom-logo .title-area img {
@@ -1045,27 +1067,31 @@ figcaption,
 
 /* Site Navigation
 ---------------------------------------------------------------------------- */
-
+/* js edit */
 .genesis-nav-menu {
 	clear: both;
 	line-height: 1;
 	width: 100%;
+	margin: 0;
+	padding: 16px 0;
 }
 
 .genesis-nav-menu .menu-item {
-	display: block;
-	float: none;
-	position: relative;
+	/* display: block; */
+	float: right;
+	text-align: right;
+	margin: 0;
+	padding: 0;
+	/* position: relative; */
 }
 
 .genesis-nav-menu a {
-	color: #333;
+	color: #fff;
 	display: block;
-	font-size: 15px;
+	font-size: 18px;
 	font-weight: 400;
-	outline-offset: -1px;
-	padding-bottom: 12px;
-	padding-top: 12px;
+	/* outline-offset: -1px; */
+	padding: 13px 26px 13px 0;
 	text-decoration: none;
 }
 
@@ -1074,7 +1100,7 @@ figcaption,
 .genesis-nav-menu .current-menu-item > a,
 .genesis-nav-menu .sub-menu .current-menu-item > a:focus,
 .genesis-nav-menu .sub-menu .current-menu-item > a:hover {
-	color: #0073e5;
+	color: var(--green);
 	text-decoration: none;
 }
 
@@ -1500,7 +1526,7 @@ p.entry-meta {
 		border-radius: 3px;
 		color: #fff;
 		font-weight: 600;
-		margin-left: 15px;
+		/* margin-left: 15px; js edit */
 		padding-left: 20px;
 		padding-right: 20px;
 	}

@@ -1,0 +1,5 @@
+style.css:
+- body: bg, text color, font-family
+
+customizer:
+- site logo - width 500px
