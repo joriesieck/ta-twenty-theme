@@ -250,3 +250,40 @@ function gc_twenty_full_width_after() {
 		echo '</div>';
 	}
 }
+
+//* js edit modify blockquote markup for easier styling
+add_filter('render_block','gc_block_quote',10,2);
+function gc_block_quote($block_content, $block) {
+	if($block['blockName']==='core/quote') {
+		$original = '<blockquote class="wp-block-quote">';
+		$new = '<blockquote class="wp-block-quote"><div>';
+		$block_content = str_replace($original, $new, $block_content);
+		$original = '</blockquote>';
+		$new = '</div></blockquote>';
+		$block_content = str_replace($original, $new, $block_content);
+	}
+	return $block_content;
+}
+
+//* js edit modify markup for study skills info pages
+add_filter('genesis_post_title_output','ta_heading');
+add_action('genesis_entry_content','ta_remove_h2',0);
+add_action('genesis_after_entry_content','ta_remove_h2_after',0);
+function ta_heading($title) {
+	if(is_page('study-skills-curriculum') || is_page('study-skills-course')) {
+		$content = get_the_content();
+		echo '<div class="study-skills-info">' . $title . substr($content,0,strpos($content,'<!-- /wp:heading -->')+20) . '</div>';
+	} else {
+		echo $title;
+	}
+}
+function ta_remove_h2() {
+	if(is_page('study-skills-curriculum') || is_page('study-skills-course')) {
+		echo '<div class="study-skills-remove">';
+	}
+}
+function ta_remove_h2_after() {
+	if(is_page('study-skills-curriculum') || is_page('study-skills-course')) {
+		echo '</div>';
+	}
+}

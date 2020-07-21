@@ -17,6 +17,11 @@ body {
 	--medium-gray-1: #999;	/* input text */
 	--super-light-gray: #eee;	/* quote-gray bg */
 	--medium-gray-2: #ccc;	/* quote-gray border */
+	--medium-green: #689c2a;	/* block quote text */
+	--dark-green: #83a924;	/* button border */
+	--dark-orange: #cb6400;	/* button border */
+	--off-black-1: #111;	/* black button */
+	--black: #000;	/* button border */
 }
 
 body {
@@ -451,37 +456,126 @@ table {
 ---------------------------------------------------------------------------- */
 /* boxes */
 .quote,
-.entry-content .wp-block-gccustom-quote-box,
 .wp-block-gccustom-quote-box {
 	background: var(--white);
 	border: 1px solid var(--light-gray-1);
 	color: var(--gray);
 	padding: 20px;
 }
-.entry-content .wp-block-gccustom-quote-box,
 .wp-block-gccustom-quote-box {
 	margin: 40px;
 }
-.entry-content .wp-block-gccustom-quote-box h5,
-.wp-block-gccustom-quote-box h5 {
+.wp-block-gccustom-quote-box h5,
+.wp-block-gccustom-quote-box button {
 	display: none;	/* ta doesn't use the title for quote */
 }
-.entry-content .wp-block-gccustom-quote-box p:last-child,
 .wp-block-gccustom-quote-box p:last-child {
 	margin-bottom: 0;
 }
 
+/* quote-gray */
 .quote-gray,
-.entry-content .wp-block-gccustom-quote-box.is-style-gray,
 .wp-block-gccustom-quote-box.is-style-gray,
-.entry-content .wp-block-gccustom-quote-box.is-style-gray-title,
-.wp-block-gccustom-quote-box.is-style-gray-title {
+.wp-block-gccustom-quote-box.is-style-gray-green-button,
+.wp-block-gccustom-quote-box.is-style-gray-orange-button,
+.wp-block-gccustom-quote-box.is-style-gray-black-button {
 	background: var(--super-light-gray);
 	border: 1px solid var(--medium-gray-2);
 	color: var(--dark-gray-2);
 }
-.entry-content .wp-block-gccustom-quote-box.is-style-gray-title h5,
-.wp-block-gccustom-quote-box.is-style-gray-title h5 {
-	font-size: 30px;
+.wp-block-gccustom-quote-box.is-style-gray-green-button h5,
+.wp-block-gccustom-quote-box.is-style-gray-orange-button h5,
+.wp-block-gccustom-quote-box.is-style-gray-black-button h5 {
 	display: block;
+}
+.wp-block-gccustom-quote-box.is-style-gray-green-button button,
+.wp-block-gccustom-quote-box.is-style-gray-orange-button button,
+.wp-block-gccustom-quote-box.is-style-gray-black-button button {
+	display: block;
+	font-size: 18px;
+	line-height: 24px;
+	padding: 16px 32px;
+	margin: 5px auto;
+}
+.wp-block-gccustom-quote-box.is-style-gray-green-button button,
+.wp-block-gccustom-quote-box.is-style-gray-green-button a {
+	background: var(--green);
+	color: var(--dark-gray);
+	border: 1px solid var(--dark-green);
+}
+.wp-block-gccustom-quote-box.is-style-gray-orange-button button,
+.wp-block-gccustom-quote-box.is-style-gray-orange-button a {
+	background: var(--orange);
+	color: var(--white);
+	border: 1px solid var(--dark-orange);
+}
+.wp-block-gccustom-quote-box.is-style-gray-black-button button,
+.wp-block-gccustom-quote-box.is-style-gray-black-button a {
+	background: var(--off-black-1);
+	color: var(--white);
+	border: 1px solid var(--black);
+}
+
+/* blockquote */
+/* add quote mark */
+.wp-block-quote::before {
+	content: "\f122";
+	font-family: dashicons;
+	color: var(--light-gray-1);
+	margin-right: 5px;
+	display: inline-block;
+}
+
+.wp-block-quote div {
+	display: inline-block
+	margin-left: 5px;
+	color: var(--medium-green);
+}
+
+.wp-block-quote__citation {
+	margin-left: 30px !important;
+	color: var(--medium-green) !important;
+}
+
+.wp-block-quote {
+	text-align: left;
+	margin-left: 0 !important;
+}
+
+/* fancy lists */
+/* fancy bullets */
+ul.is-style-green-checks li {
+	background-image: url(../../images/green-check.png);
+	padding: 0px 0px 12px 24px;
+	position: relative;
+	background-position: 0px 9px;
+	background-repeat: no-repeat;
+	background-size: 14px 14px;
+	list-style: none outside none;
+	margin: 0px;
+	text-align: left;
+}
+
+ul.is-style-red-checks li {
+	background-image: url(../../images/red-check.png);
+	padding: 0px 0px 12px 24px;
+	position: relative;
+	background-position: 0px 9px;
+	background-repeat: no-repeat;
+	background-size: 14px 14px;
+	list-style: none outside none;
+	margin: 0px;
+	text-align: left;
+}
+
+/* fancy header */
+.wp-block-gccustom-fancy-header {
+	background: var(--dark-gray);
+	color: var(--white);
+	padding: 20px;
+	text-align: center;
+	margin: 20px 0 0;
+}
+.wp-block-gccustom-fancy-header h2 {
+	color: var(--green);
 }
