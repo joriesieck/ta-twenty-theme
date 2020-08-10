@@ -103,6 +103,7 @@ body {
 	--dark-orange: #cb6400;	/* button border */
 	--off-black-1: #111;	/* black button */
 	--black: #000;	/* button border */
+	--light-gray-2: #777;	/* sidebar items border */
 }
 
 /* HTML5 Reset
@@ -181,7 +182,7 @@ html {
 
 /* js edit - change bg, color, font-family, font-weight */
 body {
-	background-color: var(--white);
+	background-color: var(--light-gray);
 	color: var(--dark-gray);
 	font-family: "PT Sans", sans-serif;
 	font-size: 18px;
@@ -682,10 +683,10 @@ th {
 }
 
 .breadcrumb {
-	border-bottom: 1px solid #eee;
-	font-size: 16px;
-	margin-bottom: 40px;
-	padding-bottom: 10px;
+	/* border-bottom: 1px solid #eee; js edit */
+	/* font-size: 16px; */
+	margin-bottom: 35px;	/* js edit - 2.5rem */
+	/* padding-bottom: 10px; */
 }
 
 .genesis-title-hidden .breadcrumb {
@@ -1098,40 +1099,34 @@ figcaption,
 
 /* Site Navigation
 ---------------------------------------------------------------------------- */
-/* js edit */
 .genesis-nav-menu {
 	clear: both;
 	line-height: 1;
 	width: 100%;
-	margin: 0;
-	padding: 16px 0;
 }
 
 .genesis-nav-menu .menu-item {
-	/* display: block; */
-	float: right;
-	text-align: right;
-	margin: 0;
-	padding: 0;
-	/* position: relative; */
+	display: block;
+	float: none;
+	position: relative;
 }
 
+/* js edit change nav menu links */
 .genesis-nav-menu a {
-	color: #fff;
+	color: var(--white);	/* js edit */
 	display: block;
 	font-size: 15px;
 	font-weight: 400;
-	/* outline-offset: -1px; */
-	padding: 13px 26px 13px 0;
+	outline-offset: -1px;
+	padding-bottom: 12px;
+	padding-top: 12px;
 	text-decoration: none;
 }
 
 .genesis-nav-menu a:focus,
 .genesis-nav-menu a:hover,
-.genesis-nav-menu .current-menu-item > a,
-.genesis-nav-menu .sub-menu .current-menu-item > a:focus,
-.genesis-nav-menu .sub-menu .current-menu-item > a:hover {
-	color: var(--green);
+.genesis-nav-menu .current-menu-item > a {
+	color: var(--green); /* js edit */
 	text-decoration: none;
 }
 
@@ -1151,11 +1146,16 @@ figcaption,
 	z-index: 99;
 }
 
+/* js edit change submenu colors */
 .genesis-nav-menu .sub-menu a {
-	background-color: #fff;
+	color: var(--white);	/* js edit addition */
 	font-size: 14px;
 	position: relative;
 	word-wrap: break-word;
+}
+
+.genesis-nav-menu.sf-js-enabled .sub-menu a {
+		background-color: var(--super-dark-gray);	/* js edit */
 }
 
 .genesis-nav-menu .menu-item:focus,
@@ -1163,7 +1163,13 @@ figcaption,
 	position: relative;
 }
 
-.genesis-nav-menu .menu-item:hover > .sub-menu {
+/* js edit - add sub menu tags */
+/* .genesis-nav-menu .menu-item:hover > .sub-menu, */
+.genesis-nav-menu .sub-menu a:focus,
+.genesis-nav-menu .sub-menu a:hover,
+.genesis-nav-menu .sub-menu .current-menu-item a:focus,
+.genesis-nav-menu .sub-menu .current-menu-item a:hover {
+	background-color: var(--dark-gray);	/* js edit - addition */
 	display: block;
 	left: auto;
 	opacity: 1;
@@ -1465,6 +1471,7 @@ p.entry-meta {
 	font-size: 16px;
 	line-height: 1.5;
 	color: var(--dark-gray-1);
+	background-color: var(--dark-gray);
 }
 
 .sidebar .widget {
@@ -1790,6 +1797,17 @@ p.entry-meta {
 		margin-bottom: 60px;
 	}
 
+	/* js edit - addition */
+	.archive-description {
+		background: var(--white);
+		margin-bottom: 35px; /* 2.5rem */
+		padding: 35px 35px 21px;	/* 2.5rem 2.5rem 1.5rem */
+	}
+	.archive-title {
+		font-size: 18px;	/* 1.25rem */
+		margin-bottom: 21px;	/* 1.5rem */
+	}
+
 	/* Footer Widgets
 	--------------------------------------------- */
 
@@ -2108,4 +2126,96 @@ ul.is-style-red-checks li {
 	color: var(--dark-gray);
 	margin-top: 10px !important;
 	font-size: 16px;
+}
+
+/* sidebar boxes */
+/* quote charcoal */
+.quote-charcoal {
+	background: var(--dark-gray);
+	color: var(--white);
+	padding: 20px;
+}
+.quote-charcoal h4,
+.quote-charcoal a {
+	color: var(--white);
+}
+
+/* base */
+.spongestart-box,
+.ghelp-box,
+.account-box,
+.tests-box,
+.logout-box {
+	border-radius: 1px;
+  -moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+	border-bottom: 1px solid var(--light-gray-2);
+	margin: 0 2px 2px;
+	padding: 17px 15px 20px 55px;
+	color: var(--white);
+}
+.spongestart-box a,
+.ghelp-box a,
+.account-box a,
+.tests-box a,
+.logout-box a {
+	color: var(--white);
+}
+
+/* Course Home - spongestart */
+.spongestart-box {
+	background: var(--dark-gray) url(/wp-content/uploads/coreimg/Start-32x32.png) no-repeat 10px 15px;
+}
+
+/* Get Help - ghelp */
+.ghelp-box {
+	background: var(--dark-gray) url(/wp-content/uploads/coreimg/Help-32x32.png) no-repeat 10px 15px;
+}
+
+/* Profile & Account - account */
+.account-box {
+	background: var(--dark-gray) url(/wp-content/uploads/coreimg/Profile-32x32.png) no-repeat 10px 15px;
+}
+
+/* Reports - tests */
+.tests-box {
+	background: var(--dark-gray) url(/wp-content/uploads/coreimg/Tests-32x32.png) no-repeat 10px 15px;
+}
+
+/* Logout - logout */
+.logout-box {
+	background: var(--dark-gray) url(/wp-content/uploads/coreimg/Logout-32x32.png) no-repeat 10px 15px;
+}
+
+/* 'floating' style for course posts only */
+.category-study-skills .entry {
+	margin: 0 3px 40px;
+	padding: 20px 0 0;
+	/* can remove below this after ld switch */
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: 0 3px 6px rgba(0,0,0, .2);
+	background: var(--white);
+}
+.category-study-skills h2.entry-title {
+	margin-bottom: 0;
+}
+.category-study-skills .entry-meta {
+	clear: both;
+	color: var(--medium-gray-1);
+	font-size: 11px;	/* .75rem */
+	border-bottom: 1px solid var(--super-light-gray);
+	margin: 0 0 18px;	/* 1.25rem */
+	padding: 20px;
+	text-transform: uppercase;
+}
+.category-study-skills .entry-content p {
+	margin-bottom: 22px;
+}
+.category-study-skills .entry-footer {
+	background: var(--super-light-gray);
+	padding: 10px 18px;	/* .625rem 1.25rem */
+}
+.category-study-skills .entry-footer p {
+	margin-bottom: 0;
 }

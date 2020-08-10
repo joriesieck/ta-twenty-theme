@@ -203,7 +203,7 @@ function ta_twenty_comments_gravatar( $args ) {
 //* js edit - Modify the read more link
 add_filter('excerpt_more','sp_read_more_link');	// this is from the gc-ea theme
 function sp_read_more_link() {
-	return '<p><a class="more-link" href="' . get_permalink() . '">Continue Reading</a></p>';
+	return ' [...]';
 }
 
 //* js edit - add font from google api
@@ -286,4 +286,48 @@ function ta_remove_h2_after() {
 	if(is_page('study-skills-curriculum') || is_page('study-skills-course')) {
 		echo '</div>';
 	}
+}
+
+/* js edits - fixes for current sponge setup */
+//* Modify breadcrumb arguments for the archives (course home pages) to remove the 'Archives for' tag
+add_filter( 'genesis_breadcrumb_args', 'sp_breadcrumb_args' );
+function sp_breadcrumb_args( $args ) {
+	$args['labels']['category'] = '';
+return $args;
+}
+
+/* Reorder the posts on Category/Course Pages */
+/*
+ * @author Bill Erickson (with modification)
+ * @link http://www.billerickson.net/customize-the-wordpress-query/
+ * @param object $query data
+ */
+add_action( 'pre_get_posts', 'category_ascend_posts' );
+function category_ascend_posts( $query ) {
+
+	if( $query->is_main_query() && $query->is_category() ) {
+		$query->set( 'orderby', 'date' );
+		$query->set( 'order', 'ASC' );
+	}
+}
+
+//* Customize the post info function */
+add_filter( 'genesis_post_info', 'sp_post_info_filter' );
+function sp_post_info_filter($post_info) {
+if ( !is_page() ) {
+	$post_info = 'Status: [ta_post_status] [post_edit]';
+	return $post_info;
+}}
+
+/* disable posts from child categories in main query  */
+add_filter('pre_get_posts','custom_csp_pre_get_posts',20,1);
+function custom_csp_pre_get_posts($query) {
+    if(function_exists('is_main_query')) {
+        if($query->is_category && !$query->is_admin && !$query->is_preview && $query->is_main_query() && false == $query->query_vars['suppress_filters']) {
+					$cat = get_term_by( 'id', 85, 'category');	// local
+            // $cat = get_term_by( 'slug', $query->query_vars['category_name'], 'category');	// live
+            $query->set('category__in',array($cat->term_id));
+        }
+    }
+    return $query ;
 }

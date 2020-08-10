@@ -1,11 +1,22 @@
-customizer:
-- site logo - width 500px
+change when moving from local:
+functions.php-> custom_csp_pre_get_posts
+
+customizer - set to autopopulate in child-theme-settings.php, except footer, menu, logo:
+- site logo - width 220px
 - site footer - [footer_copyright before="Copyright  " copyright="© 2011-"] · <a href="https://www.globalcognition.org/">Global Cognition LLC</a> · Thinker Academy™ is a trademark of Global Cognition LLC
+- remove site footer logo
+- primary menu - ta4
+- content archives (only for current setup) - entry excerpt 150, display featured image thumbnail, show breadcrumb
+- site layout - primary sidebar, content
+- posts per page - 11
+- change menu to be correct order
 
 notes:
 boxes:
 - quote
 - quote-gray
+- quote-charcoal
+- sidebar boxes - spongestart-box, ghelp-box, account-box, tests-box, logout-box
 
 buttons:
 - black
@@ -18,3 +29,14 @@ other blocks:
 - blockquote
 - bullets - green checks, red checks
 - 'user profile' widget
+
+templates:
+- single.php (only for current setup)
+
+other features:
+- sidebar
+- archive description/title (current setup only)
+- site background
+- don't show child categories on sponge page, change post info & order (current setup only)
+- 'floating' style for course posts only
+- readmore link
