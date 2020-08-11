@@ -10,6 +10,7 @@ customizer - set to autopopulate in child-theme-settings.php, except footer, men
 - site layout - primary sidebar, content
 - posts per page - 11
 - change menu to be correct order
+- remove footer logo
 
 notes:
 boxes:
@@ -34,7 +35,7 @@ templates:
 - single.php (only for current setup)
 
 other features:
-- sidebar
+- sidebars
 - archive description/title (current setup only)
 - site background
 - don't show child categories on sponge page, change post info & order (current setup only)

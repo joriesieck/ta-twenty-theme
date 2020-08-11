@@ -28,6 +28,8 @@ if ($lesson_part != 'lede') {
 	add_action('genesis_entry_footer', 'prev_slide' );
 	//change entry title class to modify (hide) post titles for supporting posts
 	add_filter( 'genesis_attr_entry-title', 'myta_change_class' );
+	// add class to .entry on supporting posts to make styling only course posts easier
+	add_filter( 'genesis_attr_entry', 'myta_add_class' );
 }
 
 function prev_slide($atts) {
@@ -35,7 +37,12 @@ function prev_slide($atts) {
 }
 /* js edit */
 function myta_change_class( $attributes ) {
-	  $attributes['class'] = 'entry-title-clean-slide';
+	  $attributes['class'] = ' entry-title-clean-slide';
+		return $attributes;
+}
+/* js edit */
+function myta_add_class( $attributes ) {
+	  $attributes['class'] .= ' study-skills-course';
 		return $attributes;
 }
 

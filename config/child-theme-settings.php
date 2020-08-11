@@ -22,7 +22,7 @@ return [
 		'breadcrumb_404'            => 0,
 		'breadcrumb_attachment'     => 0,
 		'content_archive'           => 'excerpts',	/* js edit - was full */
-		'content_archive_limit'     => 0,
+		'content_archive_limit'     => 150,
 		'content_archive_thumbnail' => 1,	/* js edit - was 0 */
 		'entry_meta_after_content'  => '[post_categories] [post_tags]',
 		'entry_meta_before_content' => '[post_date] ' . __( 'by', 'ta-twenty' ) . ' [post_author_posts_link] [post_comments] [post_edit]',
@@ -32,7 +32,5 @@ return [
 		'site_layout'               => 'sidebar-content',	/* js edit - was content-sidebar */
 	],
 	'posts_per_page'       => 11,	/* js edit - was 6 */
-	/* js additions */
-	'header_image'				=> 'https://local.sandbox/wp-content/uploads/2020/08/ThinkerAcademy-Logo-5.png',
 
 ];
