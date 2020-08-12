@@ -7,7 +7,7 @@ customizer - set to autopopulate in child-theme-settings.php, except footer, men
 - remove site footer logo
 - primary menu - ta4
 - content archives (only for current setup) - entry excerpt 150, display featured image thumbnail, show breadcrumb
-- site layout - primary sidebar, content
+- site layout - full width content
 - posts per page - 11
 - change menu to be correct order
 - remove footer logo
