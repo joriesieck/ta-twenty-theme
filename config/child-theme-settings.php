@@ -29,7 +29,7 @@ return [
 		'image_size'                => 'thumbnail',	/* js edit - was genesis-singular-images */
 		'image_alignment'           => 'alignleft',	/* js edit - was aligncenter */
 		'posts_nav'                 => 'numeric',
-		'site_layout'               => 'sidebar-content',	/* js edit - was content-sidebar */
+		'site_layout'               => 'full-width-content',	/* js edit - was content-sidebar */
 	],
 	'posts_per_page'       => 11,	/* js edit - was 6 */
 

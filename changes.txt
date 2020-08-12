@@ -11,6 +11,10 @@ customizer - set to autopopulate in child-theme-settings.php, except footer, men
 - posts per page - 11
 - change menu to be correct order
 - remove footer logo
+- add favicon
+
+other changes to make when going live:
+- fix links & images in blocks from backup
 
 notes:
 boxes:

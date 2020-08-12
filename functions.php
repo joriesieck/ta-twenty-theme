@@ -324,10 +324,83 @@ add_filter('pre_get_posts','custom_csp_pre_get_posts',20,1);
 function custom_csp_pre_get_posts($query) {
     if(function_exists('is_main_query')) {
         if($query->is_category && !$query->is_admin && !$query->is_preview && $query->is_main_query() && false == $query->query_vars['suppress_filters']) {
-					$cat = get_term_by( 'id', 85, 'category');	// local
-            // $cat = get_term_by( 'slug', $query->query_vars['category_name'], 'category');	// live
+					// $cat = get_term_by( 'id', 85, 'category');	// local
+            $cat = get_term_by( 'slug', $query->query_vars['category_name'], 'category');	// live
             $query->set('category__in',array($cat->term_id));
         }
     }
     return $query ;
 }
+
+/*
+ *	Customize Gravity Forms
+ */
+
+# anchor to forms after submission to show the badge
+add_filter( 'gform_confirmation_anchor', '__return_true' );
+
+# auto add user's name, email, and membership status to gf for mailchimp registration, sponge eval1
+add_filter('gform_field_value_learner_email', 'populate_post_learner_email');
+function populate_post_learner_email($value){
+    $user = wp_get_current_user();
+    return $user->user_email;
+}
+add_filter('gform_field_value_learner_fname', 'populate_post_learner_fname');
+function populate_post_learner_fname($value){
+    $user = wp_get_current_user();
+    return $user->user_firstname;
+}
+add_filter('gform_field_value_learner_lname', 'populate_post_learner_lname');
+function populate_post_learner_lname($value){
+    $user = wp_get_current_user();
+    return $user->user_lastname;
+}
+add_filter('gform_field_value_learner_uname', 'populate_post_learner_uname');
+function populate_post_learner_uname($value){
+    $user = wp_get_current_user();
+    return $user->user_login;
+}
+add_filter('gform_field_value_member_status', 'populate_post_member_status');
+function populate_post_member_status($value){
+	if(pmpro_hasMembershipLevel('4')) {
+		return 'student';
+	} elseif(pmpro_hasMembershipLevel('3')) {
+		return 'teacher';
+	} elseif(pmpro_hasMembershipLevel('5')) {
+		return 'edreviewer';
+	} else {
+		return 'parent';
+	}
+}
+
+
+/*
+ *	Customize the Login, Profiles, & other User Displays
+ */
+
+/**
+ * WordPress function for redirecting users on login based on user role
+ *  https://developer.wordpress.org/reference/hooks/login_redirect/
+ */
+function ta_my_login_redirect( $url, $request, $user ) {
+    if ( $user && is_object( $user ) && is_a( $user, 'WP_User' ) ) {
+      if ( $user->has_cap( 'administrator' ) ) {
+          $url = admin_url();
+      } else {
+          $url = home_url( '/course/study-skills/' );
+      }
+		}
+  return $url;
+}
+add_filter( 'login_redirect', 'ta_my_login_redirect', 10, 3 );
+
+# https://developer.wordpress.org/reference/hooks/logout_redirect/
+function ta_my_logout_redirect( $redirect_to, $requested_redirect_to, $user ) {
+	if(strpos($redirect_to,'membership-checkout')>=0) {
+    if ( $user && is_object( $user ) && is_a( $user, 'WP_User' ) ) {
+        $requested_redirect_to = home_url();
+    }
+  return $requested_redirect_to;
+	}
+}
+add_filter( 'logout_redirect', 'ta_my_logout_redirect', 10, 3 );

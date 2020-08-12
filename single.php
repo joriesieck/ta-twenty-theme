@@ -46,6 +46,12 @@ function myta_add_class( $attributes ) {
 		return $attributes;
 }
 
+/* js edit - add class to body */
+add_filter('body_class','myta_add_body_class');
+function myta_add_body_class($classes) {
+	return array_merge($classes,array('study-skills-course-body'));
+}
+
 
 // Restrict access to all posts
 if(!pmpro_hasMembershipLevel()) {
